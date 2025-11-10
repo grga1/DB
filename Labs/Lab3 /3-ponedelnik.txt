@@ -1,0 +1,5 @@
+Napisi izraz vo relaciona algebra sto ke gi prikaze adresite i kapacitetite na lokaciite na koi bile odrzani saemi samo vo 2025 godina.
+
+pom = ((Location ⨝ Location.location_id=Fair.location_id Fair)⨝
+Fair.fair_id = Held_Fair.fair_id (σ date>='2025-01-01'∧date<'2026-01-01' (Held_Fair)))
+πLocation.address,Location.capacity(pom)
