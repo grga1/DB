@@ -1,0 +1,10 @@
+Napisi izraz vo relaciona algebra sto kje gi prikaze shifrata i imeto na izdavacot sto ima najmnogu sorabotki so avtori.
+
+pom = γ publisher_id; count(author_id) → broj (Publisher_Promotion)
+
+maxVal = γ max(broj) → m (pom)
+
+red = pom⨝pom.broj = maxVal.m maxVal
+
+π Publisher.name,Publisher_Promotion.publisher_id( red⨝Publisher_Promotion.publisher_id = Publisher.publisher_id Publisher)
+
