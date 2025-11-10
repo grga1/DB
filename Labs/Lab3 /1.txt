@@ -6,5 +6,5 @@ maxVal = γ max(broj) → m (pom)
 
 red = pom⨝pom.broj = maxVal.m maxVal
 
-π Publisher.name,Publisher_Promotion.publisher_id( red⨝Publisher_Promotion.publisher_id = Publisher.publisher_id Publisher)
+π Publisher.name,Publisher_Promotion.publisher_id( red⨝red.publisher_id = Publisher.publisher_id Publisher)
 
