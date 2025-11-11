@@ -1,0 +1,9 @@
+Izlistaj gi iminjata na site devojki sto jadata pica so pecurki (mushroom pizza) ili pica so kulen (pepperoni pizza)(ili dvete)
+
+pom = (σPerson.gender='F'(Person))
+
+mushroom = (pom⨝pom.name = Eats.name (σEats.pizza='Mushroom' Eats))
+
+peperoni= (pom⨝pom.name = Eats.name (σEats.pizza='Pepperoni' Eats))
+
+πPerson.name(mushroom)∪πPerson.name(peperoni)
