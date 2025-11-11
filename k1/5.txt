@@ -1,0 +1,3 @@
+Izlistaj gi site picerii sto sluzat pici koi bile naracuvani od lugje postari od 30 godini
+
+πServes.pizzeria(((σPerson.age>30 Person)⨝Person.name=Eats.name Eats)⨝Eats.pizza = Serves.pizza Serves)
