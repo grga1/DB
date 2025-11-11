@@ -1,0 +1,3 @@
+Najdi gi site picerii sto bile poseteni od lica pomladi od 18 godini
+
+πFrequents.pizzeria((σPerson.age<21 Person)⨝Person.name = Frequents.name (Frequents))
