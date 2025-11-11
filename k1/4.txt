@@ -1,0 +1,57 @@
+Najdi ja vozrasta na najstaroto lice( ili lica) sto naracalo pica so pecurki (mushroom pizza)
+
+
+group: PizzaDB_Mushroom
+
+Person = {
+name, age, gender
+"Amy",21,"F"
+"Bob",24,"M"
+"Cara",20,"F"
+"Dan",35,"M"
+"Eva",29,"F"
+"Fred",27,"M"
+"Goran",35,"M"
+"Hana",22,"F"
+}
+
+Eats = {
+name, pizza
+"Amy","Margherita"
+"Amy","Diavola"
+"Bob","Pepperoni"
+"Cara","Vegetariana"
+"Dan","Mushroom"
+"Dan","Pepperoni"
+"Eva","Mushroom"
+"Fred","Capricciosa"
+"Goran","Mushroom"
+"Hana","Margherita"
+}
+
+Serves = {
+pizzeria, pizza, price
+"Dominos","Mushroom",9.5
+"Dominos","Pepperoni",9.9
+"Napoli","Margherita",8.5
+"Napoli","Diavola",10.5
+"Napoli","Mushroom",9.2
+"Roma","Vegetariana",9.8
+"Roma","Mushroom",10.0
+"Bella","Capricciosa",10.8
+}
+
+Frequents = {
+name, pizzeria
+"Amy","Napoli"
+"Bob","Dominos"
+"Cara","Roma"
+"Dan","Dominos"
+"Eva","Bella"
+"Fred","Napoli"
+"Goran","Roma"
+"Hana","Napoli"
+}
+
+(γ ; max(Person.age)->m(σEats.pizza='Mushroom'(Person⨝Person.name = Eats.name Eats)))
+
