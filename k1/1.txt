@@ -1,1 +1,58 @@
-пицерии што служат пици нарачани од Amy или Fay, и се поевтини од $10
+<b> пицерии што служат пици нарачани од Amy или Fay, и се поевтини од $10 </b>
+
+BAZA:
+group: PizzaDB
+
+Person = {
+name, age, gender
+"Amy",21,"F"
+"Fay",22,"F"
+"Bob",24,"M"
+"Cara",20,"F"
+"Eli",23,"M"
+}
+
+Frequents = {
+name, pizzeria
+"Amy","Napoli"
+"Amy","Roma"
+"Fay","Bella"
+"Fay","Milano"
+"Bob","Sicilia"
+"Cara","Venezia"
+"Eli","Roma"
+}
+
+Eats = {
+name, pizza
+"Amy","Margherita"
+"Amy","Diavola"
+"Fay","Pepperoni"
+"Fay","Margherita"
+"Bob","Hawaiian"
+"Cara","Vegetariana"
+"Eli","Pepperoni"
+}
+
+Serves = {
+pizzeria, pizza, price
+"Napoli","Margherita",8.0
+"Napoli","Diavola",9.5
+"Napoli","Pepperoni",10.5
+"Roma","Margherita",9.0
+"Roma","Pepperoni",11.0
+"Roma","Diavola",10.5
+"Bella","Pepperoni",9.0
+"Bella","Quattro Formaggi",12.0
+"Milano","Pepperoni",8.5
+"Milano","Margherita",12.0
+"Venezia","Margherita",9.8
+"Venezia","Vegetariana",10.2
+"Sicilia","Pepperoni",10.8
+"Sicilia","Hawaiian",9.2
+}
+
+RESENIE:
+pom = πname,pizza(σname='Amy'∨name='Fay'(Eats))
+ πpizzeria(σprice<10(Serves⨝Serves.pizza = pom.pizza (pom)))
+
