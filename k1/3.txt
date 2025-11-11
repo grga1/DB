@@ -1,0 +1,52 @@
+Najdi gi site pici sto bile naracuvani od lugje pomladi od 24 godini, ili sto cinat najmnogu $10 bez razlika kade se sluzat.
+
+group: PizzaDB_Dominos
+
+Person = {
+name, age, gender
+"Amy",21,"F"
+"Bob",24,"M"
+"Cara",20,"F"
+"Dan",22,"M"
+"Eva",23,"F"
+"Fred",27,"M"
+}
+
+Frequents = {
+name, pizzeria
+"Amy","Napoli"
+"Bob","Dominos"
+"Cara","Milano"
+"Dan","Roma"
+"Eva","Bella"
+"Fred","Dominos"
+}
+
+Eats = {
+name, pizza
+"Amy","Pepperoni"
+"Amy","Funghi"
+"Bob","Margherita"
+"Cara","Veggie"
+"Dan","Diavola"
+"Eva","Pepperoni"
+"Eva","Margherita"
+"Fred","Capricciosa"
+}
+
+Serves = {
+pizzeria, pizza, price
+"Dominos","Pepperoni",9.5
+"Dominos","Margherita",8.9
+"Dominos","Veggie",9.2
+"Napoli","Funghi",9.0
+"Napoli","Margherita",8.5
+"Roma","Diavola",10.5
+"Milano","Veggie",10.0
+"Bella","Pepperoni",9.0
+"Venezia","Capricciosa",10.8
+}
+
+tabela1 =((σ Serves.price<=10 Serves)⨝Serves.pizza=Eats.pizza Eats)
+tabela2 = ((σ Person.age<24 Person)⨝Person.name=Eats.name Eats)
+πEats.pizza(tabela1)∪πEats.pizza(tabela2)
