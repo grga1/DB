@@ -1,0 +1,50 @@
+На сликата подолу е прикажан ЕР дијаграм и релацискиот модел за систем за организација и водење евиденција за автомобилски трки.
+
+
+races
+Circuit(name, city, country, length, type)
+
+Race(name, laps, circuit*)
+
+Race_event(name*, date, time)
+
+Driver(driver_number, first_name, last_name, nationality, date_of_birth)
+
+Team(name, principal)
+
+Sponsors(name*, sponsor)
+
+Drives_for(driver_number*, team_name*, date_start, date_end)
+
+Participates(ID, driver_number*, race_name*, race_date*, start_pos, end_pos, points)
+
+
+Оператори за изразите од релациона алгебра во ова прашање:
+Проекција - π
+Селекција - σ
+Реименување - ρ
+←
+→
+Агрегација - γ
+И - ∧
+Или - ∨
+Пресек - ∩
+Унија - ∪
+Делење - ÷
+Разлика -
+Декартов производ ⨯
+Спојување ⨝
+Спојување ⟕
+Спојување ⟖
+Спојување ⟗
+Спојување ⋉
+Спојување ⋊
+Креирање помошна релација -  име = израз 
+
+Прикажи ги информациите за возачите кои не победиле (завршиле на позиција 1) на ниту една трка со повеќе од 65 кругови во 2023 година.
+
+
+π Driver.driver_number, Driver.first_name, Driver.last_name, Driver.nationality,Driver.date_of_birth(Driver) - π Driver.driver_number, Driver.first_name, Driver.last_name, Driver.nationality,Driver.date_of_birth (
+  (Driver ⨝ Driver.driver_number = Participates.driver_number
+  (σ Participates.race_date >= '2023-01-01' ∧ Participates.race_date < '2024-01-01'∧Participates.end_pos!=1 Participates)⨝Participates.race_name=Race.name (σRace.laps>65 Race)
+))
