@@ -1,0 +1,5 @@
+Napisi izraz vo relaciona algebra sto ke gi prikaze sponzorite na site izdavaci koi sorabotuvale so avtori vo 2025 godina ili imale promocoija na knigata vo 2025 godina.
+
+promocija = (Publisher⨝Publisher.publisher_id = Book_Promotion.publisher_id (σBook_Promotion.date>='2023'∧Book_Promotion.date<'2024' Book_Promotion)⨝Book_Promotion.publisher_id=Publisher_Sponsor.publisher_id Publisher_Sponsor)
+sorabotka = (Publisher⨝Publisher.publisher_id = Publisher_Promotion.publisher_id (σPublisher_Promotion.start_date>='2021'∧Publisher_Promotion.end_date<='2024' Publisher_Promotion)⨝Publisher_Promotion.publisher_id=Publisher_Sponsor.publisher_id Publisher_Sponsor)
+πPublisher_Sponsor.sponsor(promocija)∪πPublisher_Sponsor.sponsor(sorabotka)
