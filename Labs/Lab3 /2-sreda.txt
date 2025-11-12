@@ -1,0 +1,7 @@
+Napisi izraz vo relaciona algebra sto ke gi prikaze nacionalnosta i
+artistickoto ime na avtorite koi imaat prisustvuvano na saem sto se ima vremetraenje poveke od 5 dena i se odrzuva na lokacija koja ima kapacitet pomalku od 2000 lugje.
+
+ πAuthor.artistic_name,Author.nationality(((σLocation.capacity>2000Location)
+⨝Location.location_id=Fair.location_id (σFair.duration>5 Fair)
+⨝Fair.fair_id=Book_Promotion.fair_id Book_Promotion)
+⨝Book_Promotion.author_id = Author.author_id Author)
