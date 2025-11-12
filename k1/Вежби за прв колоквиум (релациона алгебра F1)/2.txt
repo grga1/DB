@@ -1,0 +1,60 @@
+На сликата подолу е прикажан ЕР дијаграм и релацискиот модел за систем за организација и водење евиденција за автомобилски трки.
+
+
+races
+Circuit(name, city, country, length, type)
+
+Race(name, laps, circuit*)
+
+Race_event(name*, date, time)
+
+Driver(driver_number, first_name, last_name, nationality, date_of_birth)
+
+Team(name, principal)
+
+Sponsors(name*, sponsor)
+
+Drives_for(driver_number*, team_name*, date_start, date_end)
+
+Participates(ID, driver_number*, race_name*, race_date*, start_pos, end_pos, points)
+
+
+Оператори за изразите од релациона алгебра во ова прашање:
+Проекција - π
+Селекција - σ
+Реименување - ρ
+←
+→
+Агрегација - γ
+И - ∧
+Или - ∨
+Пресек - ∩
+Унија - ∪
+Делење - ÷
+Разлика -
+Декартов производ ⨯
+Спојување ⨝
+Спојување ⟕
+Спојување ⟖
+Спојување ⟗
+Спојување ⋉
+Спојување ⋊
+Креирање помошна релација -  име = израз 
+
+Прикажи ги имињата на сите тимови за кои возел возачот кој освоил најмногу поени на трки одржани на улични патеки во периодот од 2010 до 2020 година.
+
+
+pom ← ρ( driver_number, poeni ) (γ Participates.driver_number; sum(points)->poeni
+      (
+        ((σ Circuit.type='Street' Circuit)
+          ⨝ Circuit.name = Race.circuit Race)
+          ⨝ Race.name = Participates.race_name
+          (σ Participates.race_date>='2010-01-01' ∧ Participates.race_date<='2020-12-31' Participates)
+      ))
+
+max ←  ρ(  maxPoeni )(γ ; max(poeni)->maxPoeni (pom))
+
+
+id ←  ρ(  driver_number) (πpom.driver_number( pom ⨝ pom.poeni = max.maxPoeni max))
+
+πDrives_for.team_name(Drives_for⨝Drives_for.driver_number=id.driver_number id)
