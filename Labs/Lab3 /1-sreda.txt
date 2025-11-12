@@ -1,0 +1,95 @@
+Napisi izraz vo relaciona algebra sto ke gi prikaze site informacii za avtorite koi promovirale knigi so izdavacot koj ima najmnogu broj na sponzori.
+
+
+pom = γPublisher.publisher_id;count(Publisher_Sponsor.sponsor) → brojac (Publisher⨝Publisher.publisher_id = Publisher_Sponsor.publisher_id (Publisher_Sponsor))
+max = γ ; max(brojac)→m(pom)
+izdavac = πPublisher.publisher_id(pom⨝pom.brojac  = max.m max)
+pom2 = ((Author⨝Author.author_id = Book_Promotion.author_id (Book_Promotion))
+⨝Book_Promotion.publisher_id = izdavac.publisher_id (izdavac))
+pom2
+
+group: KnizhenSistem
+Location = {
+location_id, name, address, capacity, type
+1,"Skopje Fair Center","Bulevar Ilinden 1, Skopje",12000,"indoor"
+2,"Belgrade Expo","Bulevar Vojvode Mišića 14, Belgrade",18000,"indoor"
+3,"Helexpo","Egnatia 154, Thessaloniki",15000,"OUTDOOR"
+4,"Inter Expo Sofia","Tsvetan Lazarov 147, Sofia",10000,"OUTDOOR"
+5,"Inter Expo Belgrade","Bulevar Vojvode Mišića 14, Belgrade",11000,"OUTDOOR"
+6,"Inter Expo Thessaloniki","Egnatia 154, Thessaloniki",10500,"OUTDOOR"
+}
+Fair = {
+fair_id, name, duration, location_id
+101,"Skopje Book Fair",5,1
+102,"Belgrade Book Fest",7,2
+103,"Balkan Lit Days",3,1
+104,"Open Air Stories",4,3
+105,"Sofia Open Books",2,4
+}
+Held_Fair = {
+fair_id, date
+101,"2023-04-10"
+101,"2024-04-08"
+102,"2023-10-05"
+103,"2024-06-15"
+104,"2024-09-10"
+105,"2024-09-14"
+}
+Author = {
+author_id, artistic_name, nationality
+201,"Ana Petrova","Macedonian"
+202,"Boris Ivanov","Bulgarian"
+203,"Elena Marku","Greek"
+204,"Marko Jovanovic","Serbian"
+}
+Publisher = {
+publisher_id, name
+301,"Ars Lamina"
+302,"Matica"
+303,"Klett"
+304,"Ikona"
+}
+Publisher_Sponsor = {
+publisher_id, sponsor
+301,"Sparkasse"
+301,"T-Mobile"
+302,"NLB"
+303,"Coca-Cola"
+304,"EVN"
+302,"VMRO"
+303,"SDSM"
+304,"ODAMEJAKO"
+303,"ADIDAS"
+304,"NIKE"
+302,"A"
+303,"B"
+304,"C"
+303,"D"
+304,"E"
+304,"F"
+}
+Publisher_Promotion = {
+author_id, publisher_id, start_date, end_date
+201,301,"2022-01-01","2023-12-31"
+201,304,"2024-01-01",undefined
+202,302,"2020-01-01",undefined
+203,303,"2022-06-01","2024-05-31"
+203,302,"2024-06-01",undefined
+204,302,"2021-03-01","2023-12-31"
+204,301,"2022-03-01",undefined
+}
+Book_Promotion = {
+fair_id, date, publisher_id, author_id, book_title, rating
+101,"2023-04-10",301,201,"Skopje Tales",4.8
+101,"2023-04-10",302,204,"Code and Coffee",4.1
+102,"2023-10-05",301,204,"Belgrade Nights",4.4
+102,"2023-10-05",302,204,"Old Roads",4.2
+102,"2023-10-05",302,202,"Danube Stories",4.0
+101,"2024-04-08",304,201,"Shadows of Vardar",4.6
+101,"2024-04-08",301,204,"Morning Tram",4.2
+103,"2024-06-15",302,203,"Thessaloniki Blue",4.5
+103,"2024-06-15",304,201,"River Echoes",4.3
+104,"2024-09-10",301,201,"Wind over Helexpo",4.7
+104,"2024-09-10",303,203,"Sea Breeze",4.4
+105,"2024-09-14",302,202,"Sofia Lights",4.1
+}
