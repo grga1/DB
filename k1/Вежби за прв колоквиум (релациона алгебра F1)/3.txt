@@ -1,0 +1,48 @@
+На сликата подолу е прикажан ЕР дијаграм и релацискиот модел за систем за организација и водење евиденција за автомобилски трки.
+
+
+races
+Circuit(name, city, country, length, type)
+
+Race(name, laps, circuit*)
+
+Race_event(name*, date, time)
+
+Driver(driver_number, first_name, last_name, nationality, date_of_birth)
+
+Team(name, principal)
+
+Sponsors(name*, sponsor)
+
+Drives_for(driver_number*, team_name*, date_start, date_end)
+
+Participates(ID, driver_number*, race_name*, race_date*, start_pos, end_pos, points)
+
+
+Оператори за изразите од релациона алгебра во ова прашање:
+Проекција - π
+Селекција - σ
+Реименување - ρ
+←
+→
+Агрегација - γ
+И - ∧
+Или - ∨
+Пресек - ∩
+Унија - ∪
+Делење - ÷
+Разлика -
+Декартов производ ⨯
+Спојување ⨝
+Спојување ⟕
+Спојување ⟖
+Спојување ⟗
+Спојување ⋉
+Спојување ⋊
+Креирање помошна релација -  име = израз 
+
+Најди ги возачките броеви на сите возачи кои почнале трки на позиција 1.
+
+
+
+ πParticipates.driver_number(σParticipates.start_pos='1' Participates)
