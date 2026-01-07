@@ -1,0 +1,11 @@
+create trigger trg
+after insert on Vakcinacija_datum
+for each row
+begin
+  update Lice
+  set celosno_imuniziran=1
+  where id = new.id_lice and (
+  select count()
+  from Vakcinacija_datum
+  where id_lice = new.id_lice)>=2;
+end
